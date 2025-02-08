@@ -10,4 +10,4 @@ def home(request):
 
 def about(request):
     # return HttpResponse('<h1>About Movies Review Page</h1><h2>Esta es la página About de mi sitio web</h2>')
-    return render(request, 'movie/about.html')
+    return render(request, 'about.html')
