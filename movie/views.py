@@ -10,8 +10,11 @@ def home(request):
    #return render(request, 'movie/home.html')
    #return render(request, 'home.html', {'name': 'Sofia Zapata'})
    searchTerm = request.GET.get('searchMovie')
-   movie = Movie.objects.all()
-   return render(request, 'home.html', {'searchTerm': searchTerm, 'Movies': movie})
+   if searchTerm:
+        movies = Movie.objects.filter(title__icontains=searchTerm)
+   else:
+        movies = Movie.objects.all()
+   return render(request, 'home.html', {'searchTerm': searchTerm, 'movies': movies})
 
 def about(request):
     # return HttpResponse('<h1>About Movies Review Page</h1><h2>Esta es la página About de mi sitio web</h2>')
